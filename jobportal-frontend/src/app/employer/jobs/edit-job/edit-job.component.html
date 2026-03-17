@@ -1,0 +1,54 @@
+<div class="container mt-4">
+
+  <h2>Edit Job</h2>
+
+  <form (ngSubmit)="updateJob()">
+
+    <div class="mb-3">
+      <label>Job Title</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="job.title"
+        name="title"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label>Location</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="job.location"
+        name="location"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label>Salary</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="job.salary"
+        name="salary"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea
+        class="form-control"
+        rows="4"
+        [(ngModel)]="job.description"
+        name="description"
+        required>
+      </textarea>
+    </div>
+
+    <button class="btn btn-primary">
+      Update Job
+    </button>
+
+  </form>
+
+</div>

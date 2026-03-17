@@ -1,0 +1,46 @@
+<div class="layout">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 class="logo">JobPortal</h2>
+
+    <nav>
+      <ul>
+        <li routerLink="/employer" routerLinkActive="active">
+          📊 Dashboard
+        </li>
+        <li routerLink="/employer/create-job" routerLinkActive="active">
+          ➕ Post Job
+        </li>
+       <li routerLink="/employer/my-jobs" routerLinkActive="active">
+          📄 My Jobs
+       </li>
+        <li (click)="logout()">
+          🚪 Logout
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <div class="dashboard-header">
+      <h2>Employer Dashboard</h2>
+      <p>Manage your jobs and track applications</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Jobs</h3>
+        <p class="stat-number">{{ totalJobs }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Total Applications</h3>
+        <p class="stat-number">{{ totalApplications }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

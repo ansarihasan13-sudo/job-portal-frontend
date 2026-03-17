@@ -1,0 +1,81 @@
+<div class="page-container">
+
+  <h2>My Posted Jobs</h2>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading">
+    Loading jobs...
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Jobs List -->
+  <div *ngIf="!isLoading && jobs.length > 0">
+
+    <div *ngFor="let job of jobs" class="job-card">
+
+      <h3>{{ job.title }}</h3>
+
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Salary:</strong> {{ job.salary }}</p>
+      <p><strong>Description:</strong> {{ job.description }}</p>
+
+      <div class="job-actions">
+
+        <!-- View Applications -->
+        <button
+          class="btn-view"
+          [routerLink]="['/employer/applications', job.id]">
+          View Applications
+        </button>
+
+        <!-- Edit Job -->
+        <button
+          class="btn-edit"
+          [routerLink]="['/employer/edit-job', job.id]">
+          Edit
+        </button>
+
+        <!-- Delete Job -->
+        <button
+          class="btn-delete"
+          (click)="deleteJob(job.id)">
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- No Jobs -->
+  <div *ngIf="!isLoading && jobs.length === 0">
+    No jobs found.
+  </div>
+
+  <!-- Pagination -->
+  <div *ngIf="totalPages > 1" class="pagination">
+
+    <button
+      (click)="previousPage()"
+      [disabled]="currentPage === 0">
+      Previous
+    </button>
+
+    <span>
+      Page {{ currentPage + 1 }} of {{ totalPages }}
+    </span>
+
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages - 1">
+      Next
+    </button>
+
+  </div>
+
+</div>
