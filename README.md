@@ -25,14 +25,8 @@ The application allows users to browse jobs, apply for jobs and track their appl
 
 This frontend communicates with the Spring Boot backend through REST APIs.
 
-Backend Repository:
-https://github.com/your-username/job-portal-backend
 
 ## Installation
-
-Clone the repository:
-
-git clone https://github.com/your-username/job-portal-frontend.git
 
 Install dependencies:
 
