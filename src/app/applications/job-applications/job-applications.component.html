@@ -1,0 +1,41 @@
+<div class="page-container">
+
+  <h2>Job Applicants</h2>
+
+  <div *ngIf="isLoading">Loading...</div>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && applications.length === 0">
+    No applicants found.
+  </div>
+
+  <div class="app-card" *ngFor="let app of applications">
+
+    <div>
+      <h3>{{ app.jobSeeker.name }}</h3>
+      <p>Email: {{ app.jobSeeker.email }}</p>
+      <p>Applied On: {{ app.appliedAt | date }}</p>
+    </div>
+
+    <div>
+      <p class="resume">
+        Resume: {{ app.resumePath }}
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button
+  *ngFor="let i of getPages()"
+  (click)="changePage(i)"
+  [class.active]="i === currentPage">
+  {{ i + 1 }}
+</button>
+  </div>
+
+</div>

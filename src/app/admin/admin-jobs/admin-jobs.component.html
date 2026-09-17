@@ -1,0 +1,46 @@
+<div class="page-container">
+
+  <h2>All Jobs</h2>
+
+  <div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <table *ngIf="jobs.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Location</th>
+        <th>Salary</th>
+        <th>Employer</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobs">
+        <td>{{ job.id }}</td>
+        <td>{{ job.title }}</td>
+        <td>{{ job.location }}</td>
+        <td>{{ job.salary }}</td>
+        <td>{{ job.employer?.name }}</td>
+        <td>
+          <button (click)="deleteJob(job.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="loadJobs(currentPage - 1)" [disabled]="currentPage === 0">
+      Previous
+    </button>
+
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+
+    <button (click)="loadJobs(currentPage + 1)" 
+            [disabled]="currentPage === totalPages - 1">
+      Next
+    </button>
+  </div>
+
+</div>

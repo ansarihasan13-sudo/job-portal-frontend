@@ -1,0 +1,47 @@
+<div class="page-container">
+
+  <h2>My Applications</h2>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading">
+    Loading...
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- No Applications -->
+  <div *ngIf="!isLoading && applications.length === 0">
+    No applications found.
+  </div>
+
+  <!-- Applications List -->
+  <div *ngIf="!isLoading && applications.length > 0">
+
+    <div *ngFor="let app of applications" class="app-card">
+
+      <h3>{{ app.job?.title }}</h3>
+
+      <p><strong>Location:</strong> {{ app.job?.location }}</p>
+      <p><strong>Salary:</strong> {{ app.job?.salary }}</p>
+      <p><strong>Applied On:</strong> {{ app.appliedAt | date }}</p>
+
+    </div>
+
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="totalPages > 1">
+
+    <button
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      (click)="changePage(i)"
+      [class.active]="i === currentPage">
+      {{ i + 1 }}
+    </button>
+
+  </div>
+
+</div>

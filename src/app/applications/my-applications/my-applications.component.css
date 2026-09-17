@@ -1,0 +1,31 @@
+.page-container {
+  padding: 20px;
+}
+
+.app-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.pagination {
+  margin-top: 15px;
+}
+
+.pagination button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.error {
+  color: red;
+}

@@ -1,0 +1,103 @@
+<h2>Create New Job</h2>
+
+<div class="form-container">
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" class="success">
+    {{ successMessage }}
+  </div>
+
+  <form (ngSubmit)="createJob()" #jobForm="ngForm">
+
+    <!-- Job Title -->
+
+    <div class="form-group">
+      <label>Title</label>
+
+      <input
+        type="text"
+        [(ngModel)]="jobData.title"
+        name="title"
+        required
+        placeholder="Enter job title"
+      />
+    </div>
+
+
+    <!-- Description -->
+
+    <div class="form-group">
+      <label>Description</label>
+
+      <textarea
+        [(ngModel)]="jobData.description"
+        name="description"
+        required
+        placeholder="Enter job description"
+      ></textarea>
+    </div>
+
+
+    <!-- Location -->
+
+    <div class="form-group">
+      <label>Location</label>
+
+      <input
+        type="text"
+        [(ngModel)]="jobData.location"
+        name="location"
+        required
+        placeholder="Enter job location"
+      />
+    </div>
+
+
+    <!-- Salary -->
+
+    <div class="form-group">
+      <label>Salary</label>
+
+      <input
+        type="number"
+        [(ngModel)]="jobData.salary"
+        name="salary"
+        required
+        min="1"
+        placeholder="Enter salary"
+      />
+    </div>
+
+
+    <!-- NEW : Company Logo Upload -->
+
+    <div class="form-group">
+      <label>Company Logo</label>
+
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+      />
+
+      <small class="text-muted">
+        Upload company logo (optional)
+      </small>
+    </div>
+
+
+    <!-- Submit Button -->
+
+    <button
+      type="submit"
+      [disabled]="isLoading || jobForm.invalid"
+    >
+      {{ isLoading ? 'Posting...' : 'Post Job' }}
+    </button>
+
+  </form>
+
+</div>

@@ -1,0 +1,65 @@
+<nav *ngIf="authService.isLoggedIn()"
+     class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+
+    <!-- Brand -->
+    <a class="navbar-brand"
+       [routerLink]="authService.getRole() === 'EMPLOYER' ? '/employer' : '/jobs'">
+      JobPortal
+    </a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+
+        <!-- JOB SEEKER -->
+        <ng-container *ngIf="authService.getRole() === 'JOB_SEEKER'">
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/jobs">Jobs</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/my-applications">
+              My Applications
+            </a>
+          </li>
+
+        </ng-container>
+
+        <!-- EMPLOYER -->
+        <ng-container *ngIf="authService.getRole() === 'EMPLOYER'">
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/employer">
+              Dashboard
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/employer/create-job">
+              Post Job
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/employer/my-jobs">
+              My Jobs
+            </a>
+          </li>
+
+        </ng-container>
+
+        <!-- LOGOUT -->
+        <li class="nav-item">
+          <a class="nav-link text-warning" (click)="logout()">
+            Logout
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
