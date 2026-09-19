@@ -7,7 +7,7 @@ import { Observable, map } from 'rxjs';
 })
 export class AdminService {
 
-  private baseUrl = 'http://localhost:8080/api/admin';
+  private baseUrl = 'https://job-portal-backend-production-00f6.up.railway.app/api/admin';
 
   constructor(private http: HttpClient) {}
 

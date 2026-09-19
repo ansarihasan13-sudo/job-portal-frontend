@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApplicationService {
 
-  private baseUrl = 'http://localhost:8080/api/applications';
+  private baseUrl = 'https://job-portal-backend-production-00f6.up.railway.app/api/applications';
 
   constructor(private http: HttpClient) {}
 
